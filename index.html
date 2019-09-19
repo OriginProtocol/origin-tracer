@@ -1,0 +1,75 @@
+<html lang="en">
+    <head>
+        <title>Origin Tracer</title>
+        <style>
+            body{
+                background: #24190d;
+                font-family: Iosevka;
+                font-size: 10px;
+                color: #fefddc;
+            }
+            #traceArea {
+                position: relative;
+            }
+            #traceArea > .op {
+                position: absolute;
+                padding-left: 18px;
+                color: #55585b;
+            }
+            #traceArea > .op > .icon {
+                width: 14px;
+                height: 14px;
+                background-color: #fefddc;
+                position: absolute;
+                left: 0px;
+                top: 0px;
+            }
+
+            #traceArea > .op > .icon.jump {
+                background-color: #0000ff;
+            }
+            #traceArea > .op > .icon.control {
+                background-color: #f01c55;
+            }
+            #traceArea > .op > .icon.environment {
+                background-color: #869b4a;
+            }
+            #traceArea > .op > .icon.stack {
+                background-color: #55585b;
+            }
+            #traceArea > .op > .icon.writeStorage {
+                background-color: #f79a32;
+            }
+
+            #traceArea > .op > .icon.stack {
+                width: 6px;
+                left: 4px;
+            }
+            #traceArea > .op > .icon.read.stack {
+                background-color: #fefddc;
+            }
+
+            #traceArea > div{
+                position: absolute;
+            }
+            #traceArea > h1{
+                position: absolute;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div>
+            <h1 style="float: left; width: 200px; margin-top: 0px;">Origin Tracer</h1>
+            <form>
+                <input type="text" id="txHash" style="width:570px; font-size: 14px; display:inline">
+                <button style="display:inline">Trace</button>
+            </form>
+        </div>
+        <div style="clear:both;"></div>
+        <div id="traceArea"></div>
+
+        
+        <script src="dist/app.bundle.js"></script>
+    </body>
+</html>
