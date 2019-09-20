@@ -143,3 +143,30 @@ export function methodSig(log: Log){
     }
     return methodSig
 }
+
+function methodCache(){
+    return JSON.parse(window.localStorage['_METHOD_CACHE'] || '{}')
+}
+
+function setMethodCache(key: string, value: any){
+    const cache = methodCache()
+    cache[key] = {value: value, date: new Date()}
+    window.localStorage['_METHOD_CACHE'] = JSON.stringify(cache)
+}
+
+
+
+export async function methodName(hexSignature: string) : Promise<string[]> {
+    const cache = methodCache()
+    if(cache[hexSignature]){
+        return cache[hexSignature].value
+    }
+    const url = 'https://www.4byte.directory/api/v1/signatures/?hex_signature='+hexSignature
+    const request = await fetch(url)
+    const body = await request.json()
+    const names = body.results.map((x:any)=>x.text_signature)
+    if(names.length > 0){
+        setMethodCache(hexSignature, names)
+    }
+    return names
+}

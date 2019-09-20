@@ -1,4 +1,4 @@
-import { TransactionData, targetAddress, methodSig } from "./data";
+import { TransactionData, targetAddress, methodSig, methodName } from "./data";
 import { layout, drawObjects } from "./vis"
 
 export function drawTrace(txData: TransactionData){
@@ -36,7 +36,20 @@ export function drawTrace(txData: TransactionData){
             callLabel.className = "callLabel"
             callLabel.style.left = node.x + 'px'
             callLabel.style.top = (node.y - 64) + 'px'
-            area.appendChild(callLabel)
+            area.appendChild(callLabel);
+
+            (async () => {
+                const names = (await methodName(nextCallMethod as string))
+                const firstName = names[0].replace(/\(.+/,'')
+                if(names.length === 1) {
+                    callLabel.innerText = firstName
+
+                }
+                if(names.length > 1) {
+                    callLabel.innerText = firstName+"*"
+                }
+                callLabel.setAttribute('title', names.join(' / ')) 
+            } )()
             
             const addressMini = document.createElement("div");
             addressMini.innerText = nextCallAddress as string

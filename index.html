@@ -2,14 +2,30 @@
     <head>
         <title>Origin Tracer</title>
         <style>
+            @font-face {
+                font-family: 'Iosevkaa';
+                font-weight: 100;
+                font-style: normal;
+                src: url('vendor/iosevka-thin.woff2') format('woff2');
+            }
+            @font-face {
+                font-family: 'Iosevkaa';
+                font-weight: 400;
+                font-style: normal;
+                src: url('vendor/iosevka-regular.woff2') format('woff2');
+            }
             body{
                 background: #24190d;
-                font-family: Iosevka;
+                font-family: Iosevkaa;
                 font-size: 10px;
                 color: #fefddc;
             }
+            h1 {
+                font-weight: 100;
+            }
             #traceArea {
                 position: relative;
+                margin-right: 20px
             }
             #traceArea > .op {
                 position: absolute;
@@ -55,6 +71,9 @@
             #traceArea > h1{
                 position: absolute;
             }
+            #traceArea > .callAddress {
+                font-size: 8px
+            }
             
         </style>
     </head>
@@ -63,7 +82,7 @@
             <h1 style="float: left; width: 200px; margin-top: 0px;">Origin Tracer</h1>
             <form>
                 <input type="text" id="txHash" style="width:570px; font-size: 14px; display:inline">
-                <button style="display:inline">Trace</button>
+                <button style="display:inline" id="traceButton">Trace</button>
             </form>
         </div>
         <div style="clear:both;"></div>
