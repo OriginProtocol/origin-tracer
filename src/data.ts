@@ -157,6 +157,9 @@ function setMethodCache(key: string, value: any){
 
 
 export async function methodName(hexSignature: string) : Promise<string[]> {
+    if(hexSignature === '?'){
+        return []
+    }
     const cache = methodCache()
     if(cache[hexSignature]){
         return cache[hexSignature].value
