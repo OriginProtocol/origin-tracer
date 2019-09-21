@@ -95,6 +95,9 @@ export function drawTrace(txData: TransactionData){
 
 
 function showInfoBox(node: DrawObject, area: HTMLDivElement){
+    const stack = ([] as string[]).concat(node.log.stack)
+    stack.reverse()
+
     const info = document.createElement("div");
     info.className = "infoBox"
     info.innerText = `${node.label}
@@ -104,7 +107,7 @@ Gas Cost: ${node.log.gasCost}
 Gas: ${node.log.gas}
 
 Stack:
-${node.log.stack.join('\n')}
+${stack.join('\n')}
     
     
     `
