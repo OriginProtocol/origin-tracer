@@ -13,6 +13,7 @@ export function drawTrace(txData: TransactionData){
     layout(nodes)
 
     const area = document.getElementById("traceArea") as HTMLDivElement
+    area.innerHTML = '' // Clear
     area.onclick = function(evt){
         console.log(evt.target)
     }
