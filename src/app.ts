@@ -9,8 +9,14 @@ function redrawDiagram(){
     inputEl.value = txHash
     if(txHash!==""){
         const txData = new TransactionData(txHash)
-        txData.on(()=>drawTrace(txData))
+        txData.on(()=>{
+            console.log(txData.hasTrace, txData.hasTxInfo)
+            if(txData.hasTrace && txData.hasTxInfo){
+                drawTrace(txData)
+            }
+        })
         txData.load()
+        txData.loadTxInfo()
     }
 }
 

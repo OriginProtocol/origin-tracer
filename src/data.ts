@@ -13,13 +13,16 @@ export interface Log {
 export class TransactionData {
     txhash: string
     hasTrace: boolean
+    hasTxInfo: boolean
     callbacks: any[]
     trace: any
+    txInfo: any
 
 
     constructor(txhash: string) {
         this.txhash = txhash
         this.hasTrace = false
+        this.hasTxInfo = false
         this.callbacks = []
     }
 
@@ -28,6 +31,7 @@ export class TransactionData {
         if (cached) {
             console.log("Using cached transaction")
             this.trace = JSON.parse(cached)
+            this.hasTrace = true
             this.processLogs(this.trace.result.structLogs)
             this.trigger()
             return
@@ -60,10 +64,7 @@ export class TransactionData {
                 "mode": "cors"
             }
         );
-        console.log("Getting body")
         let body = await response.json()
-        console.log("Got body")
-        console.log(body)
         this.hasTrace = true
         try{
             window.localStorage[this.cacheKey()] = JSON.stringify(body)
@@ -72,6 +73,33 @@ export class TransactionData {
         }
         this.trace = body
         this.processLogs(this.trace.result.structLogs as Log[])
+        this.trigger()
+    }
+
+    async loadTxInfo(){
+        let post = {
+            "jsonrpc": "2.0",
+            "id": 2,
+            "method": "eth_getTransactionByHash",
+            "params": [
+                this.txhash
+            ]
+        }
+
+        let response = await fetch(
+            "http://node.web3api.com:8545/",
+            {
+                "credentials": "omit",
+                "headers": { "content-type": "application/json" },
+                "referrerPolicy": "same-origin",
+                "body": JSON.stringify(post),
+                "method": "POST",
+                "mode": "cors"
+            }
+        );
+        this.txInfo = await response.json()
+        console.log(this.txInfo)
+        this.hasTxInfo = true
         this.trigger()
     }
 
@@ -160,8 +188,9 @@ export async function methodName(hexSignature: string) : Promise<string[]> {
     if(hexSignature === '?'){
         return []
     }
-    if(hexSignature === '0x000000'){
-        return ['Create']
+    console.log(hexSignature)
+    if(hexSignature === '00000000'){
+        return ['CREATE']
     }
     
     const cache = methodCache()

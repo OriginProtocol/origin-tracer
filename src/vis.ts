@@ -268,7 +268,7 @@ export function drawObjects(logs: Log[]){
 
 export function layout(objs: DrawObject[]){
     let xStart = 20
-    let yStart = 20
+    let yStart = 50
     let xSpacing = 70
     let ySpacing = 16
     let x = xStart

@@ -4,8 +4,10 @@ import { layout, drawObjects, DrawObject } from "./vis"
 export function drawTrace(txData: TransactionData){
     console.log("DRAW")
 
-    let nextCallMethod : string | undefined = undefined
-    let nextCallAddress : string | undefined = undefined
+    let nextCallMethod = txData.txInfo.result.input.substring(0,8)
+    let nextCallAddress = txData.txInfo.result.to
+
+
 
     const nodes = drawObjects(
         txData.trace.result.structLogs
