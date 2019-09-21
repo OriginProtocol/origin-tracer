@@ -160,6 +160,10 @@ export async function methodName(hexSignature: string) : Promise<string[]> {
     if(hexSignature === '?'){
         return []
     }
+    if(hexSignature === '0x000000'){
+        return ['Create']
+    }
+    
     const cache = methodCache()
     if(cache[hexSignature]){
         return cache[hexSignature].value
