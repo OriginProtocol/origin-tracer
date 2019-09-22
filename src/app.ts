@@ -10,8 +10,7 @@ function redrawDiagram(){
     if(txHash!==""){
         const txData = new TransactionData(txHash)
         txData.on(()=>{
-            console.log(txData.hasTrace, txData.hasTxInfo)
-            if(txData.hasTrace && txData.hasTxInfo){
+            if(txData.hasTrace){
                 drawTrace(txData)
             }
         })
