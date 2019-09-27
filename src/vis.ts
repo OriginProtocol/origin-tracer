@@ -1,5 +1,10 @@
 import { Log } from './data'
 
+// Vis.ts - annotations and layouts
+
+
+// I'm likely to throw away these two enums and just use a single 
+// style class on a node.
 export enum Color {
     write = 'write',
     read = 'read',

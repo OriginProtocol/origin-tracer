@@ -1,13 +1,12 @@
 import { TransactionData, targetAddress, methodSig, methodName } from "./data";
 import { layout, drawObjects, DrawObject } from "./vis"
 
-export function drawTrace(txData: TransactionData){
-    console.log("DRAW")
+// html.ts - Renders a transaction to an HTML / div based visualization.
 
-    
+export function drawTrace(txData: TransactionData){
+
     let nextCallMethod : (string|undefined) = '...' 
     let nextCallAddress : (string|undefined) = '...' 
-
     if(txData.txInfo){
         nextCallMethod = txData.txInfo.result.input.substring(0,8)
         nextCallAddress = txData.txInfo.result.to
@@ -40,11 +39,11 @@ export function drawTrace(txData: TransactionData){
         // click handlers, but it's fast enough
         el.onmouseover =  function(){
             clearTimeout(infoBoxTimeout)
-            deleteTheInfoBox()
-            showInfoBox(node, area)
+            infoBoxDelete()
+            infoBoxShow(node, area)
         }
         el.onmouseout =  function(){
-            infoBoxTimeout = setTimeout(deleteTheInfoBox,1000) as unknown as number
+            infoBoxTimeout = setTimeout(infoBoxDelete,1000) as unknown as number
         }
 
         const icon =  document.createElement("div");
@@ -99,7 +98,7 @@ export function drawTrace(txData: TransactionData){
 }
 
 
-function showInfoBox(node: DrawObject, area: HTMLDivElement){
+function infoBoxShow(node: DrawObject, area: HTMLDivElement){
     const stack = ([] as string[]).concat(node.log.stack)
     stack.reverse()
 
@@ -121,9 +120,9 @@ ${stack.join('\n')}
     area.appendChild(info)
 }
 
-function deleteTheInfoBox(){
+function infoBoxDelete(){
     var el = document.querySelector('.infoBox');
-    if(el === null){
+    if(el === null || el.parentNode === null){
         return
     }
     el.parentNode.removeChild(el);

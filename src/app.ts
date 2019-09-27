@@ -19,11 +19,15 @@ function redrawDiagram(){
     }
 }
 
-document.getElementById('txHashForm').onsubmit = function(){
-    window.location.hash = '#'+inputEl.value
-    return false
+const hashInputForm = document.getElementById('txHashForm')
+if(hashInputForm === null){
+    console.error("No #txHashForm form");
+} else {
+    hashInputForm.onsubmit = function(){
+        window.location.hash = '#'+inputEl.value
+        return false
+    }
 }
-
 
 window.onload = function(){
     redrawDiagram()

@@ -1,4 +1,4 @@
-
+// data.ts - handles downloading transaction data and some decoding
 
 export interface Log {
     op: string
