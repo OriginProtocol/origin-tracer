@@ -5,8 +5,8 @@ export function drawTrace(txData: TransactionData){
     console.log("DRAW")
 
     
-    let nextCallMethod = '...' 
-    let nextCallAddress = '...' 
+    let nextCallMethod : (string|undefined) = '...' 
+    let nextCallAddress : (string|undefined) = '...' 
 
     if(txData.txInfo){
         nextCallMethod = txData.txInfo.result.input.substring(0,8)
@@ -29,22 +29,22 @@ export function drawTrace(txData: TransactionData){
         console.error('No area to draw in')
         return
     }
-    let infoBoxTimeout = undefined
+    let infoBoxTimeout : number|undefined = undefined
     for(const node of nodes) {
         const el = document.createElement("div");
         el.className = 'op'
         el.innerText = node.label
         el.style.left = node.x+'px'
         el.style.top = node.y+'px'
-        // This is a slow idea to create so many
-        // click handlers. #lazy
+        // This is could be a slow idea to create so many
+        // click handlers, but it's fast enough
         el.onmouseover =  function(){
             clearTimeout(infoBoxTimeout)
             deleteTheInfoBox()
             showInfoBox(node, area)
         }
         el.onmouseout =  function(){
-            infoBoxTimeout = setTimeout(deleteTheInfoBox,1000)
+            infoBoxTimeout = setTimeout(deleteTheInfoBox,1000) as unknown as number
         }
 
         const icon =  document.createElement("div");
