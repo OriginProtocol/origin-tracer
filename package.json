@@ -9,6 +9,8 @@
   "author": "Daniel Von Fange",
   "license": "MIT",
   "scripts": {
+    "start": "webpack-dev-server",
+    "prettier":"prettier --write src/*.ts",
     "build": "webpack",
     "build:watch": "webpack --watch",
     "check-types": "tsc"
@@ -33,6 +35,7 @@
     "prettier": "1.18.2",
     "typescript": "^3.6.3",
     "webpack": "^4.40.2",
-    "webpack-cli": "^3.3.9"
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.1"
   }
 }
