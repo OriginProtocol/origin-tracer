@@ -2,17 +2,17 @@
 
 # Origin Tracer
 
-[Tracer Screenshot](https://user-images.githubusercontent.com/837/65888615-d2dab600-e36d-11e9-82b6-97448b639acf.png)
+![Tracer Screenshot](https://user-images.githubusercontent.com/837/65888615-d2dab600-e36d-11e9-82b6-97448b639acf.png)
 
 Origin Tracer provides a visual way to debug and understand the actual execution flow of a given ethereum transaction. 
 
 It's a great way to: 
 
-    - Visualize the flow of a transaction across many contracts.
-    - Debug what went wrong with your transaction.
-    - Get a feel for what bytecodes in a transaction affect gas prices.
-    - Learn how the Ethereum virtual machine actually works under the hood.
-    - Understand what the solidity compiler generates.
+- Visualize the flow of a transaction across many contracts.
+- Debug what went wrong with your transaction.
+- Get a feel for what bytecodes in a transaction affect gas prices.
+- Learn how the Ethereum virtual machine actually works under the hood.
+- Understand what the solidity compiler generates.
 
 
 ## Using
