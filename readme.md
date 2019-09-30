@@ -31,9 +31,9 @@ http://localhost:9001/#0x6e4e39723778155dca504fef42b44e6b9290d33b4d478486cb60170
 
 ## Developing
 
-We built Origin Tracer as a quick tool to help us quickly understand failing transactions. It is released now because it is very useful as is, but it's certainly not polished. You are welcome to help make it better!
+We built Origin Tracer as a quick tool to help us quickly understand failing transactions. It is released now because it is very useful as is, but it's certainly not polished. You are welcome to help make it better!
 
-The code is a slightly idiosyncratic. The lead author, in one of his occasional revolts against modern society,made it his mission to not use a single runtime NPM library. The code is written in Typescript but there are zero runtime dependencies on anything. Everything is plain javascript.
+The code is a slightly idiosyncratic. The lead author, in one of his occasional revolts against modern society, made it his mission to not use a single runtime NPM library. The code is written in Typescript but there are zero runtime dependencies on anything. Everything is plain javascript.
 
 
 ## Wishlist
