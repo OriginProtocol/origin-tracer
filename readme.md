@@ -72,4 +72,4 @@ Deploy:
 - [ ] Script deploy
 - [ ] Host on github pages
 - [ ] Host on our own domain.
-- [ ] Add license file
+- [x] Add license file
