@@ -17,14 +17,14 @@ npm install --dev-only
 echo "Building site"
 npm run build
 cp index.html _site/index.html
-cp dist/app.bundle.js _site/app.bundle.js
+cp -r dist/ _site/dist/
 cp -r vendor/ _site/vendor/
 echo "tracer.originprotocol.com" > _site/CNAME
 
 # Commit and push the resulting site build
 cd _site
 git add --all
-git commit -m "Docs build from $CURRENT_BRANCH $CURRENT_COMMIT"
+git commit -m "App build from $CURRENT_BRANCH $CURRENT_COMMIT"
 git push origin gh-pages
 
 echo "Completed"
