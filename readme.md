@@ -69,7 +69,7 @@ Refactoring:
 
 Deploy:
 
-- [ ] Script deploy
+- [x] Script deploy
 - [ ] Host on github pages
 - [ ] Host on our own domain.
 - [x] Add license file

@@ -12,8 +12,10 @@ rm -rf _site
 git worktree add -f _site gh-pages
 
 # Do the build
+echo "Installing dev dependencies"
 npm install --dev-only
-npm buld
+echo "Building site"
+npm run build
 cp index.html _site/index.html
 cp dist/app.bundle.js _site/app.bundle.js
 cp -r vendor/ _site/vendor/
@@ -23,6 +25,6 @@ echo "tracer.originprotocol.com" > _site/CNAME
 cd _site
 git add --all
 git commit -m "Docs build from $CURRENT_BRANCH $CURRENT_COMMIT"
-git push github gh-pages
+git push origin gh-pages
 
 echo "Completed"

@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server",
-    "prettier":"prettier --write src/*.ts",
+    "prettier": "prettier --write src/*.ts",
     "build": "webpack",
     "build:watch": "webpack --watch",
     "check-types": "tsc"
