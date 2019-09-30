@@ -1,0 +1,109 @@
+<html lang="en">
+    <head>
+        <title>Origin Tracer</title>
+        <style>
+            @font-face {
+                font-family: 'Iosevkaa';
+                font-weight: 100;
+                font-style: normal;
+                src: url('vendor/iosevka-thin.woff2') format('woff2');
+            }
+            @font-face {
+                font-family: 'Iosevkaa';
+                font-weight: 400;
+                font-style: normal;
+                src: url('vendor/iosevka-regular.woff2') format('woff2');
+            }
+            body{
+                background: #24190d;
+                font-family: Iosevkaa;
+                font-size: 10px;
+                color: #fefddc;
+            }
+            h1 {
+                font-weight: 100;
+            }
+            #traceArea {
+                position: relative;
+                margin-right: 20px
+            }
+            #traceArea > .op {
+                position: absolute;
+                padding-left: 18px;
+                color: #55585b;
+            }
+            #traceArea > .op:hover{
+                color: white;
+                -webkit-transition: all 0.1s;
+            }
+            #traceArea > .op > .icon {
+                width: 14px;
+                height: 14px;
+                background-color: #fefddc;
+                position: absolute;
+                left: 0px;
+                top: 0px;
+            }
+
+            #traceArea > .op > .icon.jump {
+                background-color: #0000ff;
+            }
+            #traceArea > .op > .icon.control {
+                background-color: #f01c55;
+            }
+            #traceArea > .op > .icon.environment {
+                background-color: #869b4a;
+            }
+            #traceArea > .op > .icon.stack {
+                background-color: #55585b;
+            }
+            #traceArea > .op > .icon.writeStorage {
+                background-color: #f79a32;
+            }
+
+            #traceArea > .op .icon.memory {
+                border-radius: 3px;
+            }
+
+            #traceArea > .op > .icon.stack {
+                width: 6px;
+                left: 4px;
+            }
+            #traceArea > .op > .icon.read.stack {
+                background-color: #fefddc;
+            }
+
+            #traceArea > div{
+                position: absolute;
+            }
+            #traceArea > h1{
+                position: absolute;
+            }
+            #traceArea > .callAddress {
+                font-size: 8px
+            }
+
+            #traceArea > .infoBox {
+                background: #24190d;
+                border: solid 1px #f79a32;
+                width: 320px;
+                padding: 8px;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div>
+            <h1 style="float: left; width: 200px; margin-top: 0px;">Origin Tracer</h1>
+            <form id="txHashForm">
+                <input type="text" id="txHash" placeholder="Transaction Hash" style="width:570px; font-size: 14px; display:inline" />
+                <input type="submit" value="Trace"/>
+            </form>
+        </div>
+        <div style="clear:both;"></div>
+        <div id="traceArea"></div>
+
+        
+        <script src="dist/app.bundle.js"></script>
+    </body>
+</html>
