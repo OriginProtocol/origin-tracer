@@ -14,6 +14,7 @@ It's a great way to:
 - Learn how the Ethereum virtual machine actually works under the hood.
 - Understand what the solidity compiler generates.
 
+**Warning: The current way it pulls traces from etherscan is broken. Code up a fix that uses an Alchemy/Infura API provider/key and you will be a hero.**
 
 ## Using
 
